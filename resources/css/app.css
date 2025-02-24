@@ -1,3 +1,19 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.alert {
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+.alert-success {
+    background-color: #38a169;
+    color: white;
+}
+
+.alert-danger {
+    background-color: #e53e3e;
+    color: white;
+}

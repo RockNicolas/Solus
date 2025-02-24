@@ -87,3 +87,17 @@ p a:hover {
     margin-bottom: 20px;
     border-radius: 5px;
 }
+
+.password-container {
+    position: relative;
+}
+
+.show-password-icon {
+    position: absolute;
+    right: -15px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 20px;
+    color: #007bff;
+}

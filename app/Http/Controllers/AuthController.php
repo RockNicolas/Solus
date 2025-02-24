@@ -9,45 +9,33 @@ use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
+    public function register(Request $request)
+    {
+        $validated = $request->validate([
+            'username' => 'required|string|unique:users,username|max:255',
+            'email' => 'required|email|unique:users,email|max:255',
+            'password' => 'required|string|min:8|confirmed',
+        ]);
+        $user = User::create([
+            'username' => $validated['username'],
+            'email' => $validated['email'],
+            'password' => Hash::make($validated['password']),
+        ]);
+
+        Auth::login($user);
+        return redirect()->route('dashboard')->with('success', 'Cadastro realizado com sucesso!');
+    }
     public function login(Request $request)
     {
         $credentials = $request->validate([
-            'email' => 'required|email',
+            'username' => 'required|string',
             'password' => 'required',
         ]);
-
-        if (Auth::attempt($credentials)) {
-            return redirect()->intended('/dashboard');
+        $user = User::where('username', $request->username)->first();
+        if ($user && Hash::check($request->password, $user->password)) {
+            Auth::login($user);  
+            return redirect()->route('dashboard')->with('success', 'Login bem-sucedido!');
         }
-
-        return back()->withErrors(['email' => 'Credenciais inválidas']);
-    }
-
-    public function logout()
-    {
-        Auth::logout();
-        return redirect('/');
-    }
-
-    public function showRegisterForm()
-    {
-        return view('auth.register');
-    }
-
-    public function register(Request $request)
-    {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|unique:users',
-            'password' => 'required|min:6|confirmed',
-        ]);
-
-        User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-        ]);
-
-        return redirect()->route('login')->with('success', 'Cadastro realizado com sucesso! Faça login.');
+        return back()->with('error', 'Credenciais inválidas. Tente novamente.')->withInput();
     }
 }

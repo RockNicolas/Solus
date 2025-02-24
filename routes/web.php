@@ -4,9 +4,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 
 /*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
+|--------------------------------------------------------------------------- 
+| Web Routes 
+|--------------------------------------------------------------------------- 
 */
 
 Route::get('/', function () {
@@ -28,4 +28,4 @@ Route::middleware(['auth'])->group(function () {
     })->name('dashboard');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__.'/auth.php'; 
