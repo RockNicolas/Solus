@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
-    public function register(Request $request)
+  /* public function register(Request $request)
     {
         $validated = $request->validate([
             'username' => 'required|string|unique:users,username|max:255',
@@ -24,7 +24,7 @@ class AuthController extends Controller
 
         Auth::login($user);
         return redirect()->route('dashboard')->with('success', 'Cadastro realizado com sucesso!');
-    }
+    } */
     public function login(Request $request)
     {
         $credentials = $request->validate([

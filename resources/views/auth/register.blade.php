@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
@@ -11,7 +11,7 @@
     
     <div class="container">
         <div class="background-image">
-            <!--  <img src="{{ asset('images/solus.jpg') }}" alt="Imagem de Fundo"> -->
+          <img src="{{ asset('images/solus.jpg') }}" alt="Imagem de Fundo"> 
         </div>
         <h2>Cadastro</h2>
         
@@ -44,4 +44,4 @@
         <p>Já tem uma conta? <a href="{{ route('login') }}">Faça login</a></p>
     </div>
 </body>
-</html>
+</html> -->
