@@ -45,7 +45,7 @@
         <!--<p>Não tem uma conta? <a href="{{ route('register') }}">Cadastre-se</a></p>--> 
     </div>
     
-    <script src="{{ asset('Js/Password.js') }}"></script>
+    <script src="{{ asset('Js/Login/Password.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
 </body>
 </html>

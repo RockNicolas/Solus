@@ -10,27 +10,24 @@
 </head>
 <body>
   <header>
-    <div>
-      <a href="{{ route('home') }}">
-        <img src="{{ asset('images/Solus/Barra.png') }}" alt="Ícone" width="42" height="42">
+    <div class="logo-container" onclick="toggleMenu()">
+      <a>
+        <img id="logo" class="rotate" src="{{ asset('images/Solus/Barra.png') }}" alt="Ícone" width="42" height="42">
       </a>
+      <div class="dropdown-menu">
+        <a href=>Perfil</a>
+        <a href=>Configurações</a>
+        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+          @csrf
+        </form>
+      </div>
     </div>
+
     <div class="user-info">
       @if(auth()->check())
         <!-- Usuário logado: exibe o gravatar e o nome -->
         <img src="https://www.gravatar.com/avatar/{{ md5(auth()->user()->email) }}" alt="Usuário">
         <span>{{ auth()->user()->name }}</span>
-        <!-- Dropdown ao passar o mouse -->
-        <div class="dropdown-menu">
-          <a href="{{ route('logout') }}"
-             onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-             Sair
-          </a>
-          <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-            @csrf
-          </form>
-          <a href="{{ route('login') }}">Entrar com outra conta</a>
-        </div>
       @else
         <a href="{{ route('login') }}" class="user-login">
           <img src="{{ asset('images/User/Icon1.png') }}" alt="Ícone Usuário">
@@ -43,5 +40,6 @@
   <div class="content">
     @yield('content')
   </div>
+  <script src="{{ asset('Js/Header/Header.js') }}"></script>
 </body>
 </html>

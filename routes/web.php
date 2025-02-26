@@ -10,37 +10,24 @@ use App\Http\Controllers\AuthController;
 */
 
 Route::get('/', function () {
-    return auth()->check() ? redirect()->route('dashboard') : redirect()->route('login');
+    return auth()->check() ? redirect()->route('home') : redirect()->route('login');
 });
-
 Route::get('/login', function () {
     if (auth()->check()) {
-        return redirect()->route('dashboard');
+        return redirect()->route('home');
     }
     return view('auth.login');
 })->name('login');
 
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth');
-Route::middleware(['auth'])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
-});
 
 Route::get('/home', function () {
     return view('home');
-})->name('home'); 
+})->name('home');  
 
 
-// Rota de exemplo para testar a autenticação
-Route::get('/precos', function () {
-    return 'Exibindo os preços';
-})->middleware('auth');
+// Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register');
+// Route::post('/register', [AuthController::class, 'register']);
 
-/*
-Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register');
-Route::post('/register', [AuthController::class, 'register']);
-*/
-
-require __DIR__.'/auth.php';
+require __DIR__.'/auth.php'; 

@@ -1,0 +1,43 @@
+/* Resetando margens e padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+}
+
+/* Estilo para a container principal */
+.container {
+    width: 100%;
+    padding: 20px;
+    max-width: 1200px; /* Limitar a largura da tela */
+    margin: 0 auto;
+}
+
+/* Estilos para a container de cards */
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Espaçamento entre os cards */
+    justify-content: center;
+}
+
+/* Estilo para cada card */
+.card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    width: calc(33% - 20px); /* Responsividade para 3 cards por linha */
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card h3 {
+    font-size: 1.2rem;
+    color: #333;

@@ -12,3 +12,9 @@ function togglePassword() {
         showPasswordIcon.classList.add('fa-eye'); 
     }
 }
+
+function toggleMenu() {
+    document.getElementById('logo').classList.toggle('clicked');
+    const menu = document.querySelector('.dropdown-menu');
+    menu.classList.toggle('show');
+}
