@@ -68,6 +68,10 @@ header .user-info a:hover {
 
 }
 
+.dropdown-menu.show {
+    display: block;
+}
+
 .rotate {
     transition: transform 0.5s ease-in-out;
 }
@@ -76,7 +80,17 @@ header .user-info a:hover {
     transform: rotate(180deg);
 }
 
-
-.dropdown-menu.show {
-    display: block;
+.rotate.slow-rotate {
+    animation: slowRotate 2s linear infinite;
 }
+
+@keyframes slowRotate {
+    from {
+        transform: rotate(180deg);
+    }
+    to {
+        transform: rotate(540deg); 
+    }
+}
+
+

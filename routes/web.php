@@ -12,6 +12,7 @@ use App\Http\Controllers\AuthController;
 Route::get('/', function () {
     return auth()->check() ? redirect()->route('home') : redirect()->route('login');
 });
+
 Route::get('/login', function () {
     if (auth()->check()) {
         return redirect()->route('home');
@@ -24,10 +25,9 @@ Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth');
 
 Route::get('/home', function () {
     return view('home');
-})->name('home');  
+})->name('home');
 
-
-// Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register');
-// Route::post('/register', [AuthController::class, 'register']);
+//Se colocar o Auth nem logando ele entra 
+// ->middleware('auth');
 
 require __DIR__.'/auth.php'; 

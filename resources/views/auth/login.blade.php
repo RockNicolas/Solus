@@ -33,7 +33,8 @@
             <img src="{{ asset('images/Solus/icon Solus.png') }}" alt="Imagem de Login">
         </div>
 
-        <form action="{{ route('login') }}" method="POST">
+                    <!-- Mexer aq(Router)--> 
+        <form action="{{ route('home') }}" method="GET">
             @csrf
             <input type="text" name="username" placeholder="Usuário" required>
             <div class="password-container">
@@ -42,7 +43,6 @@
             </div>
             <button type="submit">Entrar</button>
         </form>
-        <!--<p>Não tem uma conta? <a href="{{ route('register') }}">Cadastre-se</a></p>--> 
     </div>
     
     <script src="{{ asset('Js/Login/Password.js') }}"></script>
